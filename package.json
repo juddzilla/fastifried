@@ -1,0 +1,10 @@
+{
+  "name": "fastifried",
+  "version": "1.0.0",
+  "description": "Fasitfy utility for creating easily consumable client api",
+  "main": "index.js",
+  "repository": "https://github.com/juddzilla/fastifried",
+  "author": "Judd Hendrix",
+  "license": "MIT",
+  "private": false
+}
