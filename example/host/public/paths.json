@@ -1,0 +1,42 @@
+{
+  "UpdateShow": {
+    "method": "PUT",
+    "path": "/shows/:name"
+  },
+  "RemoveShow": {
+    "method": "DELETE",
+    "path": "/shows/:name"
+  },
+  "Shows": {
+    "method": "GET",
+    "path": "/shows"
+  },
+  "Show": {
+    "method": "GET",
+    "path": "/shows/:name"
+  },
+  "CreateShows": {
+    "method": "POST",
+    "path": "/shows/"
+  },
+  "UpdateCharacter": {
+    "method": "PUT",
+    "path": "/characters/:name"
+  },
+  "RemoveCharacter": {
+    "method": "DELETE",
+    "path": "/characters/:name"
+  },
+  "Characters": {
+    "method": "GET",
+    "path": "/characters/"
+  },
+  "Character": {
+    "method": "GET",
+    "path": "/characters/:name"
+  },
+  "CreateCharacters": {
+    "method": "POST",
+    "path": "/characters/"
+  }
+}

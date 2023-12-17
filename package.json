@@ -8,6 +8,33 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "fastify": "^4.25.0"
+    "@fastify/cors": "^8.4.2",
+    "@headlessui/react": "^1.7.17",
+    "@headlessui/tailwindcss": "^0.2.0",
+    "@heroicons/react": "^2.0.18",
+    "@tailwindcss/forms": "^0.5.7",
+    "autoprefixer": "^10.4.16",
+    "fastify": "^4.25.0",
+    "next": "^14.0.4",
+    "postcss": "^8.4.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.6"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "glob": "^10.3.10",
+    "nodemon": "^3.0.2"
+  },
+  "scripts": {
+    "dev:client": "cd example/client && next dev",
+    "dev:host": "nodemon --config .nodemonrc.json --exec node --experimental-modules --experimental-specifier-resolution=node ./example/host/index.js"
+  },
+  "type": "module",
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
   }
 }
