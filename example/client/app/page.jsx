@@ -21,10 +21,10 @@ export default () => {
             main='Comedies'
         />
         <div className='-mt-20 rounded-lg overflow-hidden mx-auto max-w-7xl shadow-lg'>
-          <div className='bg-white text-xl h-20 flex items-center lg:px-8'>
+          <div className='bg-white text-xl h-20 flex items-center px-2 lg:px-8'>
             “If anyone is feeling anxious, worried or maybe you just want a chat, please, please do not come crying to me.”
           </div>
-          <div className='bg-gray-800 text-lg h-20 flex items-center justify-end lg:px-8 text-right text-white'>
+          <div className='bg-gray-800 text-lg h-20 flex items-center justify-end px-4 lg:px-8 text-right text-white'>
             – Sister Michael, Derry Girls
           </div>
         </div>
