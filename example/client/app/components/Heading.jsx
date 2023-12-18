@@ -7,7 +7,6 @@ export default ({ actions, bottom, main, top }) => {
               <p className="text-base font-semibold leading-7 text-primary">{ top || '' }</p>
               <div className="md:flex md:items-center md:justify-between">
                 <div className="min-w-0 flex-1">
-                  {/*<h2 className="text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight">*/}
                   <h2 className='mt-2 text-4xl font-bold tracking-tight text-white sm:text-6xl'>
                     { main || ' ' }
                   </h2>
@@ -22,7 +21,7 @@ export default ({ actions, bottom, main, top }) => {
                     }
                     return (
                         <button
-                            className="inline-flex items-center rounded-md odd:bg-primary even:bg-secondary px-3 py-2 mr-2 text-sm font-semibold text-white shadow-sm hover:bg-white/20"
+                            className="inline-flex items-center rounded-md odd:bg-primary even:bg-secondary px-3 py-2 mr-2 text-sm font-semibold text-white shadow-sm odd:hover:bg-secondary even:hover:bg-primary"
                             key={ action.display }
                             onClick={ action.onClick }
                             type="button"
