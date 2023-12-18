@@ -3,7 +3,7 @@ const put = async(req, res) => {
     const { body, params } = req;
 
     req.data = {
-      condition: params,
+      context: params,
       values: body,
     };
   } catch (error) {

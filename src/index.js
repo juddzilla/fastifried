@@ -16,7 +16,7 @@ export default async (fastify, options, watch) => {
     await Publish(routes, options);
 
     if (watch) {
-      Watcher(options);
+      Watcher(routes, options);
     }
 
     return fastify;

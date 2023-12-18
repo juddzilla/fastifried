@@ -1,12 +1,10 @@
 const characters = [
-  { name: 'Bluto', quote: '', show: 'South Side' },
-  { name: 'Orla', quote: '', show: 'Derry Girls' },
-  { name: 'Dennis', quote: '', show: 'Always Sunny In Philadelphia' },
-  { name: 'Steven Toast', quote: '', show: 'Toast of London' },
-  { name: 'Elephant Man', quote: '', show: 'Year of The Rabbit' },
-  { name: 'Tracy', quote: '', show: '30 Rock' },
-  { name: 'Captain Holt', quote: '', show: 'Brooklyn 99' },
-  { name: 'Gob Bluth', quote: '', show: 'Arrested Development' },
+  { name: 'Bluto', quote: 'Money does important work.  Money is a machine that transports the value of your labor into the future.', show: 'South Side' },
+  { name: 'Orla', quote: 'I love my wee fingers', show: 'Derry Girls' },
+  { name: 'Dee', quote: 'At least he isn’t covered in stupid tattoos and has a cigarette for a mother', show: 'Always Sunny In Philadelphia' },
+  { name: 'Steven Toast', quote: 'Yes I can hear you Clem Fandango', show: 'Toast of London' },
+  { name: 'Tracy', quote: 'Put it in the tub with a reef', show: '30 Rock' },
+  { name: 'Gob Bluth', quote: 'Illusions, Michael', show: 'Arrested Development' },
 ];
 
 let shows = [
@@ -14,9 +12,7 @@ let shows = [
   { name: 'Derry Girls', seasons: 3, streamer: 'Netflix' },
   { name: 'Always Sunny In Philadelphia', seasons: 16, streamer: 'Hulu' },
   { name: 'Toast of London', seasons: 4, streamer: 'BBC' },
-  { name: 'Year of The Rabbit', seasons: 1, streamer: 'BBC' },
   { name: '30 Rock', seasons: 7, streamer: 'Peacock' },
-  { name: 'Brooklyn 99', seasons: 8, streamer: 'Peacock' },
   { name: 'Arrested Development', seasons: 5, streamer: 'Netflix' },
 ];
 
@@ -24,7 +20,8 @@ let shows = [
 export default {
   Characters: {
     Create: async (data) => {
-      characters.push(data);
+      characters.push({ ...data, quote: '' });
+      return data;
     },
     Find: async ({ name }) => {
       const index = characters.findIndex((character) => character.name === name);
@@ -43,7 +40,7 @@ export default {
     },
     Update: async ({ context, values }) => {
       const index = characters.findIndex((character) => character.name === context.name);
-      const character = { ...characters[index], tagline: values.tagline };
+      const character = { ...characters[index], quote: values.quote };
       
       characters[index] = character;
       

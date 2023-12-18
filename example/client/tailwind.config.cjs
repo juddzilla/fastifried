@@ -36,11 +36,8 @@ export default {
       },
       colors: ({ colors }) => ({
         gray: colors.neutral,
-        ivory: '#FFFFEF',
-        'option-1': '#e64001',
-        'option-2': '#fff',
-        'option-3': 'rgb(250 250 250)',
-
+        primary: '#ff496c',
+        secondary: '#0abab5',
       }),
       fontFamily: {
         sans: 'var(--font-inter)',
@@ -72,6 +69,6 @@ export default {
   },
   plugins: [formsPlugin, headlessuiPlugin],
   safelist: [{
-    pattern: /(bg|text|border|fill)-(option|ivory)-(1|2|3)/
+    pattern: /(bg|text|border|fill)-(primary)/
   }],
 }

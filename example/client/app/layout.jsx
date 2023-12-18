@@ -1,6 +1,8 @@
 import { Inter } from 'next/font/google';
 import Header from './components/header.jsx';
 
+import AuthWrapper from './components/auth-context';
+
 import '@/styles/tailwind.css';
 
 const inter = Inter({
@@ -24,11 +26,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={ `h-full antialiased ${ inter.variable }` }
     >
-      <body className="">
-        <Header />
-        <div className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'>
+      <body className="bg-gray-100 h-full">
+        <AuthWrapper>
+          <Header />
           { children }
-        </div>
+        </AuthWrapper>
       </body>
     </html>
   )

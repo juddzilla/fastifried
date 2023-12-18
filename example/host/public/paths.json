@@ -38,5 +38,17 @@
   "CreateCharacters": {
     "method": "POST",
     "path": "/characters/"
+  },
+  "Logout": {
+    "method": "GET",
+    "path": "/logout"
+  },
+  "Login": {
+    "method": "GET",
+    "path": "/login"
+  },
+  "AuthCheck": {
+    "method": "GET",
+    "path": "/auth"
   }
 }

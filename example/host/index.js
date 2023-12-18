@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import cookies from '@fastify/cookie';
 import cors from '@fastify/cors';
 
 import Fastifried from '../../index.js';
@@ -6,14 +7,21 @@ import EnvVars from './env.js';
 
 import config from './config.js';
 
-const { host, port } = EnvVars;
+const {
+  cookieSecret,
+  environment,
+  host,
+  port,
+} = EnvVars;
+
 const fastify = Fastify({ logger: true });
 fastify.register(cors, { origin: true, credentials: true });
+fastify.register(cookies, { secret: cookieSecret, });
 
 await Fastifried(
   fastify,
   config,
-  ['dev', 'development' ].includes(EnvVars.environment),
+  ['dev', 'development' ].includes(environment),
 );
 
 fastify.listen({
