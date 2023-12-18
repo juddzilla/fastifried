@@ -21,7 +21,7 @@ export default function() {
 
   async function saveQuote() {
     try {
-      const req = await API.UpdateCharacter({ name: character.name, quote: newQuote })
+      const req = await API.CharactersUpdate({ name: character.name, quote: newQuote })
       setCharacter(req);
       setOpen(false);
     } catch (err) {
@@ -34,7 +34,7 @@ export default function() {
   }, [authed]);
 
   useEffect(() => {
-    API.Character({ name: parts[parts.length - 1] })
+    API.CharactersDetail({ name: parts[parts.length - 1] })
         .then(res => {
           setCharacter(res);
           setNewQuote(res.quote);

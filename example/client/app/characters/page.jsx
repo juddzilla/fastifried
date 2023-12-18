@@ -13,7 +13,7 @@ export default function() {
   const authed = useContext(AuthContext);
 
   useEffect(() => {
-    API.Characters()
+    API.CharactersList()
       .then(res => {
         setCharacters(res);
       })
@@ -21,6 +21,17 @@ export default function() {
         console.error('ERR', err);
       });
   }, []);
+
+  async function removeCharacter(index) {
+    try {
+      const removeCharacter = characters[index];
+      await API.CharactersRemove(removeCharacter);
+      characters.splice(index, 1);
+      setCharacters([...characters]);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
       <>
@@ -45,7 +56,7 @@ export default function() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
-                  { characters.map((character) => (
+                  { characters.map((character, index) => (
                       <tr key={ character.name }>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                           <Link href={ `characters/${ character.name }` }>{ character.name }</Link>
@@ -55,7 +66,7 @@ export default function() {
                         /td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
                           { authed.loggedIn &&
-                            <button className="p-2 rounded border border-transparent text-primary hover:border-primary">
+                            <button onClick={ () => removeCharacter(index) } className="p-2 rounded border border-transparent text-primary hover:border-primary">
                               Remove<span className="sr-only">, { character.show }</span>
                             </button>
                           }

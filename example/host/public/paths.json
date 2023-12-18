@@ -1,49 +1,49 @@
 {
-  "UpdateShow": {
+  "ShowsUpdate": {
     "method": "PUT",
     "path": "/shows/:name"
   },
-  "RemoveShow": {
+  "ShowsRemove": {
     "method": "DELETE",
     "path": "/shows/:name"
   },
-  "Shows": {
+  "ShowsList": {
     "method": "GET",
     "path": "/shows"
   },
-  "Show": {
+  "ShowsDetail": {
     "method": "GET",
     "path": "/shows/:name"
   },
-  "CreateShows": {
+  "ShowsCreate": {
     "method": "POST",
     "path": "/shows"
   },
-  "UpdateCharacter": {
+  "CharactersUpdate": {
     "method": "PUT",
     "path": "/characters/:name"
   },
-  "RemoveCharacter": {
+  "CharactersRemove": {
     "method": "DELETE",
     "path": "/characters/:name"
   },
-  "Characters": {
+  "CharactersList": {
     "method": "GET",
     "path": "/characters/"
   },
-  "Character": {
+  "CharactersDetail": {
     "method": "GET",
     "path": "/characters/:name"
   },
-  "CreateCharacters": {
+  "CharactersCreate": {
     "method": "POST",
     "path": "/characters/"
   },
-  "Logout": {
+  "AuthLogout": {
     "method": "GET",
     "path": "/logout"
   },
-  "Login": {
+  "AuthLogin": {
     "method": "GET",
     "path": "/login"
   },

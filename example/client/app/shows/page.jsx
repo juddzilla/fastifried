@@ -18,7 +18,7 @@ export default function() {
 
   async function addShow() {
     try {
-      const req = await API.CreateShows(newShow);
+      const req = await API.ShowsCreate(newShow);
       shows.push(req);
       setShows([...shows]);
       setOpen(false);
@@ -30,7 +30,7 @@ export default function() {
   async function removeShow(index) {
     try {
       const removeShow = shows[index];
-      await API.RemoveShow(removeShow);
+      await API.ShowsRemove(removeShow);
       shows.splice(index, 1);
       setShows([...shows]);
       setOpen(false);
@@ -40,7 +40,7 @@ export default function() {
   }
 
   useEffect(() => {
-    API.Shows()
+    API.ShowsList()
         .then(res => {
           setShows(res);
         })

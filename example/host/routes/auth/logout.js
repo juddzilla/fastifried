@@ -8,7 +8,6 @@ export const route = {
       .send();
   },
   method: 'GET',
-  name: 'Logout',
   path: '/logout',
   unprotected: true,
 }

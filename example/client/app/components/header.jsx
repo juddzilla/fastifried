@@ -19,7 +19,7 @@ const navigation = [
 
    async function login() {
      try {
-       await API.Login();
+       await API.AuthLogin();
        authed.changeLoggedIn(true);
      } catch (err) {
        console.error(err);
@@ -28,7 +28,7 @@ const navigation = [
 
    async function logout() {
      try {
-       await API.Logout();
+       await API.AuthLogout();
        authed.changeLoggedIn(false);
      } catch (err) {
        console.error(err);

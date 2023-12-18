@@ -8,6 +8,5 @@ const handler = async (req, res) => {
 export const route = {
   handler,
   method: 'POST',
-  name: 'CreateShows',
   path: '/shows',
 };

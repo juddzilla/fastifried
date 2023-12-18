@@ -21,7 +21,7 @@ export default function() {
   const parts = path.trim().split('/');
 
   useEffect(() => {
-    API.Show({ name: parts[parts.length - 1] })
+    API.ShowsDetail({ name: parts[parts.length - 1] })
       .then(res => {
         setShow(res.show);
         console.log('RES', res.show);
@@ -34,7 +34,7 @@ export default function() {
 
   async function saveNewCharacter() {
     try {
-      const req = await API.CreateCharacters({ name: newCharacter, show: show.name });
+      const req = await API.CharactersCreate({ name: newCharacter, show: show.name });
       characters.push(req);
       setCharacters([...characters]);
       setOpen(false);
@@ -45,7 +45,7 @@ export default function() {
 
   async function removeCharacter(index) {
     try {
-      const req = await API.RemoveCharacter({ name, show: show.name });
+      const req = await API.CharactersRemove({ name, show: show.name });
       characters.splice(index, 1);
       setCharacters([...characters]);
       setOpen(false);

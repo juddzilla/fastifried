@@ -8,7 +8,6 @@ const handler = async (req, res) => {
 export const route = {
   handler,
   method: 'PUT',
-  name: 'UpdateShow',
   path: '/shows/:name',
 };
 

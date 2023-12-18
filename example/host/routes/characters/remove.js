@@ -8,6 +8,5 @@ const handler = async (req, res) => {
 export const route = {
   handler,
   method: 'DELETE',
-  name: 'RemoveCharacter',
   path: '/characters/:name',
 };

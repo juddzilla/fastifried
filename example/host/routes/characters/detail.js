@@ -8,7 +8,6 @@ const handler = async (req, res) => {
 export const route = {
   handler,
   method: 'GET',
-  name: 'Character',
   path: '/characters/:name',
   unprotected: true,
 };

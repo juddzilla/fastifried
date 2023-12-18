@@ -18,7 +18,7 @@ export default async function(options) {
   const pathsFileName = 'paths.json';
   const ROUTES = routes ? routes : await findRoutes(routesDirectory);
 
-  let fileName = distFileName || 'fastifry.js';
+  let fileName = distFileName || 'fastifried.js';
 
   if (path.extname(fileName) !== '.js') {
     fileName = fileName += '.js';

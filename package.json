@@ -29,7 +29,8 @@
   },
   "scripts": {
     "dev:client": "cd example/client && next dev",
-    "dev:host": "nodemon --config .nodemonrc.json --exec node --experimental-modules --experimental-specifier-resolution=node ./example/host/index.js"
+    "dev:host": "nodemon --config .nodemonrc.json --exec node --experimental-modules --experimental-specifier-resolution=node ./example/host/index.js",
+    "example:build": "node --experimental-modules --experimental-specifier-resolution=node ./src/consume/ config=./example/host/fastifry.config.js"
   },
   "type": "module",
   "postcss": {

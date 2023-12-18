@@ -8,7 +8,7 @@ import preValidation from './routing/preValidations/auth';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDirectory = path.join(path.dirname(__dirname),  'host');
-const watchDirectory = path.join(rootDirectory, 'routes', '**');
+const watchDirectory = path.join(rootDirectory, 'routes');
 const distDirectory = path.join(rootDirectory, EnvVars.distDirectory);
 
 const originalRoutes = await findRoutes(watchDirectory);

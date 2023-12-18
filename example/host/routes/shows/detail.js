@@ -9,7 +9,6 @@ const handler = async (req, res) => {
 export const route = {
   handler,
   method: 'GET',
-  name: 'Show',
   path: '/shows/:name',
   unprotected: true,
 };
