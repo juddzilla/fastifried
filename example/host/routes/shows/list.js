@@ -10,7 +10,7 @@ export const route = {
   method: 'GET',
   name: 'Shows',
   path: '/shows',
-  public: true,
+  unprotected: true,
 };
 
 export default handler;

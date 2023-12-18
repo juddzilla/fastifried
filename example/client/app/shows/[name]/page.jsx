@@ -11,7 +11,7 @@ import Heading from '@/app/components/Heading';
 import { ContentTable } from '@/styles/styles';
 
 export default function() {
-  const [show, setShow] = useState({});
+  const [show, setShow] = useState({ name: null, seasons: null, streamer: null });
   const [characters, setCharacters] = useState([]);
   const [open, setOpen] = useState(false);
   const [newCharacter, setNewCharacter] = useState('');
@@ -24,6 +24,7 @@ export default function() {
     API.Show({ name: parts[parts.length - 1] })
       .then(res => {
         setShow(res.show);
+        console.log('RES', res.show);
         setCharacters(res.characters);
       })
       .catch(err => {

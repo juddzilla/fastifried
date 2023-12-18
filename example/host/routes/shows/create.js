@@ -9,5 +9,5 @@ export const route = {
   handler,
   method: 'POST',
   name: 'CreateShows',
-  path: '/shows/',
+  path: '/shows',
 };

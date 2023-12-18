@@ -5,7 +5,7 @@ import cors from '@fastify/cors';
 import Fastifried from '../../index.js';
 import EnvVars from './env.js';
 
-import config from './config.js';
+import config from './fastifry.config';
 
 const {
   cookieSecret,
@@ -18,16 +18,14 @@ const fastify = Fastify({ logger: true });
 fastify.register(cors, { origin: true, credentials: true });
 fastify.register(cookies, { secret: cookieSecret, });
 
-await Fastifried(
-  fastify,
-  config,
-  ['dev', 'development' ].includes(environment),
-);
+if (['dev', 'development' ].includes(environment)) {
+  await Fastifried(fastify, config);
+}
 
 fastify.listen({
   port,
   host,
   listenTextResolver: (address) => { return `Fastifried Fastify server is listening at ${address}` },
 }, (err) => {
-  if (err) { throw err; }
+  if (err) { throw Error(err) }
 });

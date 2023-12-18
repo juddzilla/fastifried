@@ -17,7 +17,7 @@
   },
   "CreateShows": {
     "method": "POST",
-    "path": "/shows/"
+    "path": "/shows"
   },
   "UpdateCharacter": {
     "method": "PUT",

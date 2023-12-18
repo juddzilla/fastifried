@@ -1,8 +1,8 @@
 export default {
-  consumableDirectory: 'public',
-  consumableName: 'fastifry.js',
   cookieName: 'appCookieName',
   cookieSecret: 'appCookieSecret',
+  distDirectory: 'public',
+  distFileName: 'fastifried',
   environment: 'dev',
   host: 'localhost',
   port: 6009,

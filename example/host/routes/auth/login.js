@@ -21,5 +21,5 @@ export const route = {
   method: 'GET',
   name: 'Login',
   path: '/login',
-  public: true,
+  unprotected: true,
 };

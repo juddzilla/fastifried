@@ -3,22 +3,32 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { writeFile } from 'fs/promises';
+import findRoutes from './find-routes';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const clientFrom = path.resolve(__dirname, 'fetch.js');
-
-export default async function(routes, options) {
+export default async function(options) {
   const {
-    consumableDirectory,
-    consumableFileName,
+    distDirectory,
+    distFileName,
+    routes,
+    routesDirectory,
   } = options;
 
-  const consumable = consumableFileName || 'fastifry.js';
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+  const fetchTemplate = path.resolve(__dirname, 'fetch.js');
+  const pathsFileName = 'paths.json';
+  const ROUTES = routes ? routes : await findRoutes(routesDirectory);
 
-  const publicConsumable = path.resolve(consumableDirectory, consumable);
-  const publicPathsFile = path.join(consumableDirectory, 'paths.json');
+  let fileName = distFileName || 'fastifry.js';
+
+  if (path.extname(fileName) !== '.js') {
+    fileName = fileName += '.js';
+  }
+
+  const publicFetch = path.resolve(distDirectory, fileName);
+  const publicPathsFile = path.join(distDirectory, pathsFileName);
+
   if (!fs.existsSync(publicPathsFile)) {
-    fs.mkdirSync(consumableDirectory, { recursive: true });
+    fs.mkdirSync(distDirectory, { recursive: true });
     try {
       await writeFile(publicPathsFile, JSON.stringify({}));
     } catch (err) {
@@ -26,17 +36,16 @@ export default async function(routes, options) {
     }
   }
 
-  const paths = routes.reduce((acc, value) => {
+  const paths = ROUTES.reduce((acc, value) => {
     const { method, name } = value;
     acc[name] = { method, path: value.path };
     return acc;
   }, {});
 
-  fs.copyFileSync(clientFrom, publicConsumable);
+  fs.copyFileSync(fetchTemplate, publicFetch);
   return fs.writeFile(publicPathsFile, JSON.stringify(paths, null, 2), (err) => {
     if (err) {
-      console.warn('write paths err', err);
-      throw err;
+      throw Error(err);
     }
   });
 }

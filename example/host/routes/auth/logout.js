@@ -10,5 +10,5 @@ export const route = {
   method: 'GET',
   name: 'Logout',
   path: '/logout',
-  public: true,
+  unprotected: true,
 }

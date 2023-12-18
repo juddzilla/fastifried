@@ -11,7 +11,5 @@ export const route = {
   method: 'GET',
   name: 'Show',
   path: '/shows/:name',
-  public: true,
+  unprotected: true,
 };
-
-export default handler;
