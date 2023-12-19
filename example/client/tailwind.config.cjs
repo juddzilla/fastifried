@@ -69,6 +69,6 @@ export default {
   },
   plugins: [formsPlugin, headlessuiPlugin],
   safelist: [{
-    pattern: /(bg|text|border|fill)-(primary)/
+    pattern: /(bg|text|border|fill)-(primary|secondary)/
   }],
 }

@@ -16,6 +16,7 @@ const originalRoutes = await findRoutes(watchDirectory);
 const routes = originalRoutes.map(oRoute => {
   const { unprotected, ...rest } = oRoute;
   const route = rest;
+  console.log('routess', oRoute, route);
   if (!unprotected) {
     route.preValidation = preValidation;
   }

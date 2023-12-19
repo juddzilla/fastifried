@@ -1,4 +1,4 @@
-import Store from '../store.js';
+import Store from '../../store.js';
 
 const handler = async (req, res) => {
   const show = await Store.Shows.Find(req.data);
@@ -6,7 +6,7 @@ const handler = async (req, res) => {
   return res.send({ characters, show });
 };
 
-export const route = {
+export default {
   handler,
   method: 'GET',
   path: '/shows/:name',

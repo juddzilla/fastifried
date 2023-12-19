@@ -1,7 +1,7 @@
 const handler = async (req, res) => res.status(200).send({ success: true });
 
-export const route = {
+export default {
   handler,
   method: 'GET',
   path: '/auth',
-};
+}
