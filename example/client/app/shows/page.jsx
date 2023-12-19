@@ -6,7 +6,7 @@ import { Fragment, useContext, useEffect, useState } from 'react';
 
 
 import API from '@/app/api';
-import { AuthContext } from '@/app/components/auth-context';
+import { AuthProvider } from '@/app/components/auth-provider.jsx';
 import Heading from '@/app/components/Heading';
 import { ContentTable } from '@/styles/styles';
 
@@ -14,7 +14,7 @@ export default function() {
   const [shows, setShows] = useState([]);
   const [newShow, setNewShow] = useState({ name: '', streamer: '', seasons: 0 });
   const [open, setOpen] = useState(false);
-  const authed = useContext(AuthContext);
+  const authed = useContext(AuthProvider);
 
   async function addShow() {
     try {

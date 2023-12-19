@@ -4,7 +4,7 @@ import { createContext, useEffect, useState } from 'react';
 
 import API from '@/app/api';
 
-export const AuthContext = createContext(null);
+export const AuthProvider = createContext(null);
 
 export default ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(null);
@@ -21,8 +21,8 @@ export default ({ children }) => {
   const changeLoggedIn = (value) => setLoggedIn(value);
 
   return (
-      <AuthContext.Provider value={ { loggedIn, changeLoggedIn } }>
+      <AuthProvider.Provider value={ { loggedIn, changeLoggedIn } }>
         { children }
-      </AuthContext.Provider>
+      </AuthProvider.Provider>
   )
 }

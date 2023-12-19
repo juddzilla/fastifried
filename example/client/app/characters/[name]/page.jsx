@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { PlusIcon } from '@heroicons/react/20/solid';
 
 import API from '@/app/api';
-import { AuthContext } from "@/app/components/auth-context";
+import { AuthProvider } from "@/app/components/auth-provider.jsx";
 import Heading from '@/app/components/Heading';
 
 export default function() {
@@ -14,7 +14,7 @@ export default function() {
   const [newQuote, setNewQuote] = useState('');
   const [open, setOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(null);
-  const authed = useContext(AuthContext);
+  const authed = useContext(AuthProvider);
 
   const path = usePathname()
   const parts = path.trim().split('/');

@@ -4,13 +4,13 @@ import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import API from '@/app/api';
-import { AuthContext } from '@/app/components/auth-context';
+import { AuthProvider } from '@/app/components/auth-provider.jsx';
 import Heading from '@/app/components/Heading';
 import { ContentTable } from '@/styles/styles';
 
 export default function() {
   const [characters, setCharacters] = useState([]);
-  const authed = useContext(AuthContext);
+  const authed = useContext(AuthProvider);
 
   useEffect(() => {
     API.CharactersList()

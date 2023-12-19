@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useContext, useState } from 'react';
 
 import API from '@/app/api';
-import { AuthContext } from '@/app/components/auth-context';
+import { AuthProvider } from '@/app/components/auth-provider.jsx';
 
 const navigation = [
   { name: 'Shows', href: '/shows' },
@@ -15,7 +15,7 @@ const navigation = [
 
  export default () => {
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-   const authed = useContext(AuthContext);
+   const authed = useContext(AuthProvider);
 
    async function login() {
      try {

@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import Header from './components/header.jsx';
 
-import AuthWrapper from './components/auth-context';
+import AuthWrapper from './components/auth-provider.jsx';
 
 import '@/styles/tailwind.css';
 

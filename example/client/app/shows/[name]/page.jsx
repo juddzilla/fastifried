@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Fragment, useContext, useEffect, useState } from 'react';
 
 import API from '@/app/api';
-import { AuthContext } from '@/app/components/auth-context';
+import { AuthProvider } from '@/app/components/auth-provider.jsx';
 import Heading from '@/app/components/Heading';
 import { ContentTable } from '@/styles/styles';
 
@@ -15,7 +15,7 @@ export default function() {
   const [characters, setCharacters] = useState([]);
   const [open, setOpen] = useState(false);
   const [newCharacter, setNewCharacter] = useState('');
-  const authed = useContext(AuthContext);
+  const authed = useContext(AuthProvider);
 
   const path = usePathname()
   const parts = path.trim().split('/');
