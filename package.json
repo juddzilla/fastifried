@@ -14,6 +14,7 @@
     "@heroicons/react": "^2.0.18",
     "@tailwindcss/forms": "^0.5.7",
     "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
     "fastify": "^4.25.0",
     "next": "^14.0.4",
     "postcss": "^8.4.32",
@@ -22,6 +23,8 @@
     "tailwindcss": "^3.3.6"
   },
   "dependencies": {
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-syntax-import-assertions": "^7.23.3",
     "@fastify/cookie": "^9.2.0",
     "chokidar": "^3.5.3",
     "glob": "^10.3.10",
@@ -30,7 +33,8 @@
   "scripts": {
     "dev:client": "cd example/client && next dev",
     "dev:host": "nodemon --config .nodemonrc.json --exec node --experimental-modules --experimental-specifier-resolution=node ./example/host/index.js",
-    "example:build": "node --experimental-modules --experimental-specifier-resolution=node ./src/consume/ config=./example/host/fastifry.config.js"
+    "example:build": "node --experimental-modules --experimental-specifier-resolution=node ./src/consume/ config=./example/host/fastifry.config.js",
+    "lint": "eslint --fix ./src"
   },
   "type": "module",
   "postcss": {

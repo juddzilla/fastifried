@@ -92,4 +92,4 @@ export default function API(hostUrl, userHeaders) {
     acc[key] = methodMap[route.method.toUpperCase()].bind(null, route);
     return acc;
   }, {});
-};
+}
