@@ -12,15 +12,19 @@ export const findFiles = (directory) => {
 };
 
 export default async (directory) => {
+  // Get paths of all files in directory
   const filepaths = findFiles(directory);
 
   try {
     const routes = await Promise.all(filepaths.map(async (filepath) => {
+      // Import each file's 'route' object
       const { route } = await import(filepath);
+
       if (!route) {
         return null;
       }
 
+      // Create method name, and add under 'name' key to route object
       const relative = path.relative(directory, filepath);
       const parts = relative.split('/');
       parts[parts.length - 1] = path.parse(parts[parts.length - 1]).name;
@@ -37,6 +41,7 @@ export default async (directory) => {
       return { ...route, name };
     }));
 
+    // Filter out falsy values
     return routes.filter(Boolean);
   } catch (err) {
     throw Error(err);

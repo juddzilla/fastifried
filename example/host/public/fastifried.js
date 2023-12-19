@@ -1,3 +1,5 @@
+// This file will be consumed by the client
+
 import PublicHostRoutes from './paths.json' assert { type: 'json' };
 
 const HostPaths = Object.keys(PublicHostRoutes);
