@@ -17,13 +17,6 @@ const request = async (url, opts) => {
   }
 };
 
-/**
- * Generates a set of functions for handling routes based on the provided host paths.
- *
- * @param {String} hostUrl - An string of the Host URL.
- * @param {Object} userHeaders - An object user defined request Headers.
- * @returns {Object} An object with functions for handling routes based on host paths.
- */
 export default function API(hostUrl, userHeaders) {
   const headers = { 'Content-Type': 'application/json', ...userHeaders };
 
@@ -165,7 +158,14 @@ export default function API(hostUrl, userHeaders) {
     PUT: withBody,
   };
 
-
+  /**
+   * Generates a set of functions for handling routes based on the provided host paths.
+   *
+   * @param {Array} hostPaths - An array of host paths to generate functions for.
+   * @param {Object} publicHostRoutes - An object mapping host keys to route objects.
+   * @param {Object} methodMap - An object mapping HTTP methods to corresponding functions.
+   * @returns {Object} An object with functions for handling routes based on host paths.
+   */
   return HostPaths.reduce((acc, key) => {
     // Retrieve the route object for the current host key
     const route = PublicHostRoutes[key];
