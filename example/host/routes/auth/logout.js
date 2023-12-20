@@ -1,6 +1,6 @@
 import EnvVars from '../../env';
 
-export default {
+export const route = {
   handler: (req, res) => {
     res
       .clearCookie(EnvVars.cookieName)
@@ -10,4 +10,4 @@ export default {
   method: 'GET',
   path: '/logout',
   unprotected: true,
-}
+};

@@ -6,7 +6,7 @@ const handler = async (req, res) => {
   return res.send({ characters, show });
 };
 
-export default {
+export const route = {
   handler,
   method: 'GET',
   path: '/shows/:name',

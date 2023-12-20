@@ -16,7 +16,7 @@ const handler = (req, res) => {
       .send({ success: true });
 }
 
-export default {
+export const route = {
   handler,
   method: 'GET',
   path: '/login',

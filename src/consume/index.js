@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-import { Publish } from '../index';
+import Publish from '../routing/publish';
 
 const processArgs = process.argv.slice(2);
 

@@ -21,7 +21,6 @@ export default async function(options) {
     distDirectory,
     distFileName,
     routes,
-    routesDirectory,
   } = options;
 
   // Determine the directory of the current module file
@@ -30,7 +29,7 @@ export default async function(options) {
   const fetchTemplate = path.resolve(__dirname, 'fetch.js');
   const pathsFileName = 'paths.json';
   // If routes are not provided, discover them dynamically
-  const ROUTES = routes ? routes : await findRoutes(routesDirectory);
+  const ROUTES = routes ? routes : await findRoutes(options);
 
   // Ensure the output file has a .js extension
   let fileName = distFileName || 'fastifried.js';

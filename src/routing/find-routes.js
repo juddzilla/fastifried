@@ -14,13 +14,14 @@ export const findFiles = (directory) => {
 /**
  * Asynchronously loads route objects from files in a directory and processes them.
  *
- * @param {string} directory - The directory path containing route files.
+ * @param {string} routesDirectory - The directory path containing route files.
+ * @param {boolean} useNamedExport - If true, Fastifried will use the name export 'route' in the files from options.routesDirectory
  * @returns {Promise<Array<Object>>} A promise that resolves to an array of processed route objects.
  * @throws {Error} Throws an error if there is an issue loading or processing route files.
  */
-export default async (directory) => {
+export default async ({ routesDirectory, useNamedExport }) => {
   // Find file paths in the specified directory
-  const filepaths = findFiles(directory);
+  const filepaths = findFiles(routesDirectory);
 
   try {
     // Use Promise.all to asynchronously load and process route files
@@ -29,21 +30,19 @@ export default async (directory) => {
       const routeFile = await import(filepath);
 
       // Determine the route object, considering 'route' or 'default' property
-      const route = Object.prototype.hasOwnProperty.call(routeFile, 'route') ? routeFile.route : routeFile.default;
+      const route = useNamedExport ? routeFile.route : routeFile.default;
 
       // If no route object is found, skip to the next iteration
       if (!route) {
         return null;
       }
 
-      let name;
+      let name = route.name;
 
       // Extract the route name, either from the 'name' property or by processing the file path
-      if (Object.hasOwn(route, 'name')) {
-        name = route.name;
-      } else {
+      if (!name) {
         // Process the file path to generate a camelCase name
-        const relative = path.relative(directory, filepath);
+        const relative = path.relative(routesDirectory, filepath);
         const parts = relative.split('/');
 
         parts[parts.length - 1] = path.parse(parts[parts.length - 1]).name;
@@ -64,7 +63,11 @@ export default async (directory) => {
     }));
 
     // Filter out null routes and return the processed array
-    return routes.filter(Boolean);
+    const filtered = routes.filter(Boolean);
+    console.log('# of Routes found:', filtered.length);
+
+    // return the processed array
+    return filtered;
   } catch (err) {
     // Throw an error if there is an issue loading or processing route files
     throw new Error(err);

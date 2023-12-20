@@ -5,7 +5,7 @@ const handler = async (req, res) => {
   return res.send(show);
 };
 
-export default {
+export const route = {
   handler,
   method: 'DELETE',
   path: '/shows/:name',
