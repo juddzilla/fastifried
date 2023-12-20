@@ -11,7 +11,7 @@ import Heading from '@/app/components/Heading';
 import { ContentTable } from '@/styles/styles';
 
 export default function() {
-  const [shows, setShows] = useState([]);
+  const [shows, setShows] = useState(null);
   const [newShow, setNewShow] = useState({ name: '', streamer: '', seasons: 0 });
   const [open, setOpen] = useState(false);
   const authed = useContext(AuthProvider);
@@ -86,7 +86,7 @@ export default function() {
                   </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
-                  { shows.map((show, index) => (
+                  { shows ? shows.map((show, index) => (
                       <tr key={ show.name }>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                           <Link href={ `/shows/${show.name}` }>{ show.name }</Link>
@@ -101,7 +101,13 @@ export default function() {
                           }
                         </td>
                       </tr>
-                  )) }
+                  )) : (
+                      <tr>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                          <span>Loading</span>
+                        </td>
+                      </tr>
+                  )}
                   </tbody>
                 </table>
               </div>

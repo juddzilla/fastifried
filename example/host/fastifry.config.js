@@ -12,24 +12,24 @@ const routesDirectory = path.join(rootDirectory, 'routes');
 const distDirectory = path.join(rootDirectory, EnvVars.distDirectory);
 const useNamedExport = true;
 
-// const originalRoutes = await findRoutes({ routesDirectory, useNamedExport });
+const originalRoutes = await findRoutes({ routesDirectory, useNamedExport });
 
-// const routes = originalRoutes.map(oRoute => {
-//   const { unprotected, ...rest } = oRoute;
-//   const route = rest;
-//
-//   if (!unprotected) {
-//     route.preValidation = preValidation;
-//   }
-//
-//   route.preHandler = preHandlers[route.method.toUpperCase()]
-//   return route;
-// });
+const routes = originalRoutes.map(oRoute => {
+  const { unprotected, ...rest } = oRoute;
+  const route = rest;
+
+  if (!unprotected) {
+    route.preValidation = preValidation;
+  }
+
+  route.preHandler = preHandlers[route.method.toUpperCase()]
+  return route;
+});
 
 export default {
   distDirectory,
   distFileName: EnvVars.distFileName,
-  // routes,
+  routes,
   routesDirectory,
   useNamedExport,
 }

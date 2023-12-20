@@ -47,7 +47,7 @@ export default function() {
   const actions = [
     {
       display: 'Edit Quote',
-      hidden: !loggedIn || character.quote === null  || !character.quote.trim().length,
+      hidden: !loggedIn || character.quote === null  || (character.quote && !character.quote.trim().length),
       onClick: () => { setOpen(!open) }
     }
   ]
@@ -71,7 +71,7 @@ export default function() {
               </div>
             </div>
           }
-          { (character.quote && character.quote !== null && !character.quote.trim().length) &&
+          { (character.quote && !character.quote.trim().length) &&
               <div className="text-center">
                 <h3 className="mt-2 text-sm font-semibold text-gray-50">No Quote</h3>
                 <p className="mt-1 text-sm text-gray-500">What's your favorite quote from this character</p>
@@ -87,7 +87,7 @@ export default function() {
                 </div>
               </div>
           }
-          { character.quote !== null  && character.quote.trim().length &&
+          { character.quote && character.quote.trim().length &&
             <div className="blockquote-wrapper -mt-32">
               <div className="blockquote">
                 <h1>
@@ -143,7 +143,7 @@ export default function() {
                     </div>
                     <div className="mt-5 sm:mt-6">
                       <button
-                          disabled={ !newQuote.trim().length }
+                          disabled={ !newQuote || !newQuote.trim().length }
                           type="button"
                           className="inline-flex w-full justify-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary disabled:bg-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                           onClick={ saveQuote }

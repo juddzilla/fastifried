@@ -12,7 +12,7 @@ import { ContentTable } from '@/styles/styles';
 
 export default function() {
   const [show, setShow] = useState({ name: null, seasons: null, streamer: null });
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState(null);
   const [open, setOpen] = useState(false);
   const [newCharacter, setNewCharacter] = useState('');
   const authed = useContext(AuthProvider);
@@ -89,7 +89,7 @@ export default function() {
                 </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                { characters.map((character, index) => (
+                { characters ? characters.map((character, index) => (
                     <tr key={character.name}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                         <Link href={ `/characters/${character.name}` }>
@@ -105,7 +105,13 @@ export default function() {
                         }
                       </td>
                     </tr>
-                )) }
+                )) : (
+                  <tr>
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <span>Loading</span>
+                    </td>
+                  </tr>
+                )}
                 </tbody>
               </table>
             </div>

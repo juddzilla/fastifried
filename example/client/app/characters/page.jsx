@@ -9,7 +9,7 @@ import Heading from '@/app/components/Heading';
 import { ContentTable } from '@/styles/styles';
 
 export default function() {
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState(null);
   const authed = useContext(AuthProvider);
 
   useEffect(() => {
@@ -56,23 +56,32 @@ export default function() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
-                  { characters.map((character, index) => (
-                      <tr key={ character.name }>
+                  { characters === null ? (
+                      <tr>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                          <Link href={ `characters/${ character.name }` }>{ character.name }</Link>
-                        </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                          <Link href={ `shows/${ character.show }` }>{ character.show }</Link><
-                        /td>
-                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
-                          { authed.loggedIn &&
-                            <button onClick={ () => removeCharacter(index) } className="p-2 rounded border border-transparent text-primary hover:border-primary">
-                              Remove<span className="sr-only">, { character.show }</span>
-                            </button>
-                          }
+                          Loading
                         </td>
                       </tr>
-                  )) }
+                  ) : (
+                      characters.map((character, index) => (
+                          <tr key={ character.name }>
+                            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                              <Link href={ `characters/${ character.name }` }>{ character.name }</Link>
+                            </td>
+                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                              <Link href={ `shows/${ character.show }` }>{ character.show }</Link><
+                        /td>
+                            <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
+                              { authed.loggedIn &&
+                                  <button onClick={ () => removeCharacter(index) } className="p-2 rounded border border-transparent text-primary hover:border-primary">
+                                    Remove<span className="sr-only">, { character.show }</span>
+                                  </button>
+                              }
+                            </td>
+                          </tr>
+                      ))
+                  )
+                  }
                   </tbody>
                 </table>
               </div>
